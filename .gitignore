@@ -1,0 +1,29 @@
+# Python and Django related
+*.pyc
+__pycache__/
+*.sqlite3
+db.sqlite3
+local_settings.py
+/backend/env/
+/backend/venv/
+*.log
+
+# Node.js and frontend related
+node_modules/
+dist/
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# VS Code
+.vscode/
+
+# Other
+*.swp
+*~
+*.bak
+*.tmp
+tmp/
