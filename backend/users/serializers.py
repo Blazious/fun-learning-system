@@ -116,23 +116,16 @@ class UserCreateSerializer(serializers.ModelSerializer):
         return attrs
     
     def create(self, validated_data):
-        """Create user and profile with validated data."""
-        # Extract profile-related fields
-        profile_fields = ['bio', 'academic', 'professional', 'interests', 'social_links']
-        profile_data = {field: validated_data.pop(field, None) for field in profile_fields}
+        """Create user. Profile is created via post_save signal."""
+        # Extract and drop profile-related fields (handled separately or later)
+        for field in ['bio', 'academic', 'professional', 'interests', 'social_links']:
+            validated_data.pop(field, None)
         
         # Remove password_retype as it's not needed for user creation
         validated_data.pop('password_retype', None)
         
-        # Create user
+        # Create user (post_save signal will create Profile)
         user = User.objects.create_user(**validated_data)
-        
-        # Create profile with extracted data
-        Profile.objects.create(
-            user=user,
-            **{k: v for k, v in profile_data.items() if v is not None}
-        )
-        
         return user
 
 

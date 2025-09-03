@@ -1,8 +1,8 @@
 from django.urls import path
+from .views import MentorshipProgramListView
 
 app_name = 'mentorship'
 
 urlpatterns = [
-    # Placeholder for future mentorship endpoints
-    # Will be implemented in Phase 2
+    path('programs/', MentorshipProgramListView.as_view(), name='program-list'),
 ]

@@ -1,8 +1,8 @@
 from django.urls import path
+from .views import SessionListView
 
 app_name = 'sessions'
 
 urlpatterns = [
-    # Placeholder for future session endpoints
-    # Will be implemented in Phase 2
+    path('', SessionListView.as_view(), name='session-list'),
 ]

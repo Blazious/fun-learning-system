@@ -1,8 +1,8 @@
 from django.urls import path
+from .views import CommunityListView
 
 app_name = 'communities'
 
 urlpatterns = [
-    # Placeholder for future community endpoints
-    # Will be implemented in Phase 2
+    path('', CommunityListView.as_view(), name='community-list'),
 ]
